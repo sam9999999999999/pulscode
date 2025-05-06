@@ -38,7 +38,6 @@ def encoder(pcmpulses, encoderbits):
     dsignal = []
     for x in pcmpulses:
         x=int(x)
-        print(x)
         bits = format(x, 'b')
         bits = bits.zfill(encoderbits)
         dsignal.append(bits)
@@ -51,8 +50,8 @@ def encoder(pcmpulses, encoderbits):
 
 A = float(input("Amplitude (A): "))
 omega = float(input("Angular Frequency (omega): "))
-sigma = float(input("Phase Shift (sigma): "))
-duration = float(input("Duration (seconds): "))
+sigma = float(input("Phase (sigma): "))
+duration = float(input("Duration (in seconds): "))
 interval = float(input("Sampling Interval (seconds): "))
 encoderbits = int(input("Encoder Bits: "))
 levels = 2**encoderbits
