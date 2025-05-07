@@ -18,7 +18,7 @@ def sampler(samples, interval, A, omega, sigma, duration):
     while t <= duration:
         samples.append(analog_signal_generator(A, omega, sigma, duration, t))
         t += 1
-    print(samples)
+    print("Sampales:- ",samples)
 
 def quantizer(samples, pcmpulses, levels):
     A_max = max(samples)
@@ -32,7 +32,7 @@ def quantizer(samples, pcmpulses, levels):
         else:
             Q_level = int(Q_level)
             pcmpulses.append(Q_level)
-    print(pcmpulses)
+    print("quantizer:- " , pcmpulses)
 
 
 def encoder(pcmpulses, encoderbits):
@@ -43,11 +43,7 @@ def encoder(pcmpulses, encoderbits):
         bits = bits.zfill(encoderbits)
         dsignal.append(bits)
     print(''.join(dsignal))
-
-
-
-
-
+    return dsignal
 
 A = float(input("Amplitude (A): "))
 omega = float(input("Angular Frequency (omega): "))
@@ -59,12 +55,11 @@ levels = 2**encoderbits
 
 samples = []
 pcmpulses = []
+# degsegnal = dsignal
 
-sampler(samples, interval, A, omega, sigma, duration)
-quantizer(samples, pcmpulses, levels)
-encoder(pcmpulses, encoderbits)
-
-
-# while t <= duration:
-#     analog_signal_generator(A, omega, sigma, duration, t)
-#     t += 1
+if (A<=0 or omega<=0 or duration<=0):
+    print("the enter value is not apricable...!!!")
+else:
+    sampler(samples, interval, A, omega, sigma, duration)
+    quantizer(samples, pcmpulses, levels)
+    encoder(pcmpulses, encoderbits)
