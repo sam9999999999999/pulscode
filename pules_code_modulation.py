@@ -58,7 +58,7 @@ pcmpulses = []
 # degsegnal = dsignal
 
 if (A<=0 or omega<=0 or duration<=0):
-    print("the enter value is not apricable...!!!")
+    print("The entered value cannot be accepted...!!!")
 else:
     sampler(samples, interval, A, omega, sigma, duration)
     quantizer(samples, pcmpulses, levels)
