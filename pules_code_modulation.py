@@ -5,7 +5,6 @@ import math
 #𝜎 = phase
 # 14553
 
-#   Analog Signal Generator
 
 
 def analog_signal_generator(A, omega, sigma, duration, t):
@@ -13,11 +12,13 @@ def analog_signal_generator(A, omega, sigma, duration, t):
     #print(signalgen)
     return signalgen
 
+
 def sampler(samples, interval, A, omega, sigma, duration):
     t=0
     while t <= duration:
         samples.append(analog_signal_generator(A, omega, sigma, duration, t))
         t += 1
+    print(samples)
 
 def quantizer(samples, pcmpulses, levels):
     A_max = max(samples)
@@ -31,7 +32,7 @@ def quantizer(samples, pcmpulses, levels):
         else:
             Q_level = int(Q_level)
             pcmpulses.append(Q_level)
-        print(pcmpulses)
+    print(pcmpulses)
 
 
 def encoder(pcmpulses, encoderbits):
@@ -41,7 +42,7 @@ def encoder(pcmpulses, encoderbits):
         bits = format(x, 'b')
         bits = bits.zfill(encoderbits)
         dsignal.append(bits)
-    print(dsignal)
+    print(''.join(dsignal))
 
 
 
@@ -62,6 +63,8 @@ pcmpulses = []
 sampler(samples, interval, A, omega, sigma, duration)
 quantizer(samples, pcmpulses, levels)
 encoder(pcmpulses, encoderbits)
+
+
 # while t <= duration:
 #     analog_signal_generator(A, omega, sigma, duration, t)
 #     t += 1
